@@ -14,25 +14,25 @@ import javax.persistence.*;
 public class KakaoMapsEntity {
 
     @Id
-    @Column(name = "id", length = 15, nullable = false)
+    @Column(name = "id", length = 15)
     private Long id;
 
-    @Column(name = "place_name", length = 100, nullable = false)
+    @Column(name = "place_name", length = 100)
     private String placeName;
 
-    @Column(name = "phone", length = 20, nullable = false)
+    @Column(name = "phone", length = 20)
     private String phone;
 
-    @Column(name = "road_address_name", length = 200, nullable = false)
+    @Column(name = "road_address_name")
     private String roadAddressName;
 
-    @Column(name = "place_url", length = 100, nullable = false)
+    @Column(name = "place_url", length = 100)
     private String placeUrl;
 
-    @Column(name = "x", length = 100, nullable = false)
+    @Column(name = "x", length = 100)
     private String x;
 
-    @Column(name = "y", length = 100, nullable = false)
+    @Column(name = "y", length = 100)
     private String y;
 
     /*@JoinColumn(name = "HPTRECEPTION_pName")

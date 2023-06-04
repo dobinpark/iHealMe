@@ -61,7 +61,7 @@ public class KakaoMapsController {
 
     @GetMapping("/")
     public String searchPlace() {
-        return "maps/main";
+        return "maps/kakaoMaps";
     }
 
     @GetMapping("/places")
@@ -80,12 +80,12 @@ public class KakaoMapsController {
         return "maps/searchList";
     }
 
-    @GetMapping("/places/map")
+    /*@GetMapping("/places/map")
     public String map(Model model) {
         List<KakaoMapsEntity> entities = kakaoMapsService.getAll();
         model.addAttribute("places", entities);
         return "maps/maps";
-    }
+    }*/
 
     /*@PostMapping("/api")
     public String setPlace(KakaoMapsDto kakaoMapsDto) {

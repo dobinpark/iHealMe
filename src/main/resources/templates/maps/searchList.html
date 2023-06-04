@@ -68,7 +68,7 @@
 			}
 			
 			function onConfirm() {
-				const nextUrl = "/api/reservation";
+				const nextUrl = "/reservation";
 				window.location.replace(nextUrl);
 				closeModal();
 			}
@@ -88,7 +88,7 @@
 			
 			const mapsBtn = reservationBtn.nextElementSibling;
 			mapsBtn.addEventListener("click", () => {
-				const url = `/maps/reservation?placeId=${placeId}`;
+				const url = `/reservation?placeId=${placeId}`;
 				window.location.href = url;
 				});
 				

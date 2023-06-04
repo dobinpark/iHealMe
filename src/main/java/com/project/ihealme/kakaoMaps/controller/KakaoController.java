@@ -24,6 +24,7 @@ public class KakaoController {
         return kakaoMapsService.save(kakaoMapsDto);
     }*/
 
+    // 토큰이 담긴 GetMapping
     /*@GetMapping("/")
     public String maps(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
