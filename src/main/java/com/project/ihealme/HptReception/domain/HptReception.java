@@ -25,13 +25,15 @@ public class HptReception {
         private String txList;
 
         @Column(name = "RDATE")
+        @ColumnDefault("sysdate")
         private LocalDateTime rDate;
 
         @Column(name = "CURRENTSTATUS", length = 20)
+        @ColumnDefault("'접수대기'")
         private String currentStatus;
 
         @Column(name = "RTCOUNT", length = 10)
+        @ColumnDefault("0")
         private int rtCount;
 
 }
-

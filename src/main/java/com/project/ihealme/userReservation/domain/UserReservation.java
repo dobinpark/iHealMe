@@ -31,6 +31,7 @@ public class UserReservation extends BaseEntity {
     private String list;
 
     @Column(name = "CURRENTSTATUS")
+    @ColumnDefault("'접수대기'")
     private String currentStatus;
 
 }

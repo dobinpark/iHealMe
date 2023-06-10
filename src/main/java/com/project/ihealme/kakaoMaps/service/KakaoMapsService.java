@@ -10,18 +10,25 @@ import com.project.ihealme.kakaoMaps.entity.KakaoMapsEntity;
 import com.project.ihealme.kakaoMaps.entity.KakaoReservationEntity;
 import com.project.ihealme.kakaoMaps.repository.KakaoMapsRepository;
 import com.project.ihealme.kakaoMaps.repository.KakaoReservationRepository;
+import com.project.ihealme.user.dto.HospitalRequest;
+import com.project.ihealme.user.entity.User;
+import com.project.ihealme.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,12 +36,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class KakaoMapsService {
 
-    @Autowired
-    private KakaoConfig kakaoConfig;
-
     private final KakaoMapsRepository kakaoMapsRepository;
     private final KakaoReservationRepository kakaoReservationRepository;
+    private final UserRepository userRepository;
 
+    // 카카오 REST API 데이터를 DTO로 변환
     public List<KakaoMapsDto> convertToKakaoMapsDto(String search) throws JsonProcessingException {
         // 카카오 API 호출하여 검색 결과를 받아옴
         String apiUrl = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + search;
@@ -65,6 +71,7 @@ public class KakaoMapsService {
         return kakaoList;
     }
 
+    //DTO -> 엔티티 변환
     public List<KakaoMapsEntity> convertToKakaoMapsEntity(List<KakaoMapsDto> dtos) {
         return dtos.stream()
                 .map(dto -> new KakaoMapsEntity(dto.getId(), dto.getPlaceName(), dto.getPhone(),
@@ -90,8 +97,28 @@ public class KakaoMapsService {
         kakaoMapsRepository.deleteAll();
     }
 
+    // 병원명, 병원 주소, 병원 번호 업데이트
+    public boolean updateUserPlaceData(Long placeId, Long userId, User updatedUser) {
+        try {
+            Optional<User> optionalUser = userRepository.findById(userId);
+            if (optionalUser.isPresent()) {
+                User existingUser = optionalUser.get();
+                existingUser.setHptName(updatedUser.getHptName());
+                existingUser.setHptAddress(updatedUser.getHptAddress());
+                existingUser.setHptPhoneNum(updatedUser.getHptPhoneNum());
+                userRepository.save(existingUser);
+                return true;
+            }
+        } catch (Exception e) {
+            // 예외 처리
+        }
+        return false;
+    }
+
+    // 예약하기
     public void saveReservation(KakaoReservationDto kakaoReservationDto) {
 
+        // 환아명, 진료항목, 병원명
         KakaoReservationEntity kakaoReservationEntity = new KakaoReservationEntity();
         kakaoReservationEntity.setId(kakaoReservationDto.getId());
         kakaoReservationEntity.setPxName(kakaoReservationDto.getPxName());
@@ -102,4 +129,21 @@ public class KakaoMapsService {
         kakaoReservationRepository.save(kakaoReservationEntity);
     }
 
+    // 병원 정보 업데이트
+    public void updateUserInformation(String hptName, String hptAddress, String hptPhoneNum) {
+        // 현재 로그인된 사용자의 정보 가져오기
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = ((UserDetails) principal).getUsername();
+
+        // 사용자 정보 가져오기
+        User user = (User) userRepository.findByName(name);
+
+        // 컬럼 값 설정
+        user.setHptName(hptName);
+        user.setHptAddress(hptAddress);
+        user.setHptPhoneNum(hptPhoneNum);
+
+        // 엔티티 저장
+        userRepository.save(user);
+    }
 }

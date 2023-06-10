@@ -14,7 +14,7 @@
 <body>
 	<div layout:fragment="content">
 		<div class="container">
-			<p>선택한 병원: <span th:text="${selectedPlaceName}" /></p>
+			<p>선택한 병원: <span th:text="${selectedPlaceName}" onsubmit="updateUserInformation()"/>
 			<form th:action="@{/reservation}" method="POST">
 				<label th:for="${pxName}">환아명:</label>
 				<input type="text" th:id="${pxName}" name="pxName" placeholder="ex) 홍길동" required>
@@ -55,6 +55,40 @@
 					
 					// 예약 성공 메시지를 보여줍니다.
 					successMsgEl.style.display = "block";
+				}
+				
+				function updateUserInformation() {
+					const businessNum = document.getElementById("businessNum").value;
+					const hptName = document.getElementById("hptName").value;
+					const hptAddress = document.getElementById("hptAddress").value;
+					const hptPhoneNum = document.getElementById("hptPhoneNum").value;
+					
+					// AJAX 요청을 사용하여 서버에 사용자 정보 업데이트 요청을 전송합니다.
+					const xhr = new XMLHttpRequest();
+					xhr.open("POST", "/updateUserInformation", true);
+					xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							// 요청이 성공적으로 처리되었을 때의 동작을 정의합니다.
+							// 예를 들어, 성공 메시지를 표시하거나 다음 동작을 수행할 수 있습니다.
+							// 예약 신청 등 다른 동작을 수행하려면 이곳에서 처리합니다.
+							document.querySelector("form").submit();
+						} else {
+							// 요청이 실패한 경우에 대한 처리를 정의합니다.
+							// 예를 들어, 오류 메시지를 표시하거나 다른 동작을 수행할 수 있습니다.
+							console.error("요청이 실패하였습니다.");
+						}
+					};
+					const data = {
+						businessNum: businessNum,
+						hptName: hptName,
+						hptAddress: hptAddress,
+						hptPhoneNum: hptPhoneNum
+					};
+					xhr.send(JSON.stringify(data));
+					
+					// 폼 제출을 막습니다. 실제로는 서버로 전송됩니다.
+					return false;
 				}
 			</script>
 		</div>
