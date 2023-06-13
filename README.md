@@ -67,12 +67,21 @@ Back-End 개발자 6명<br>
 
 # 📷 Screenshot
 **메인화면**
-<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/7dc1b230-a0ff-4d8a-97c9-058e21df08a2"/>
-**매일맛집**
-<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/f4e2d722-1405-4ea3-bf8b-6d991b1188e1"/>
-**매일게시판**
-<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/436cf052-5170-43a7-ac15-1e0774638de2"/>
-**상품등록**
-<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/b441b294-ccb2-4e3f-866d-256165460040"/>
-**장바구니**
-<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/df6779da-45df-4ff8-a4c7-36dbb13020e6"/>
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/8bcdcad0-7268-4218-8b2e-e2227f943eb8"/>
+**회원가입**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/2e812032-7abb-47a9-917c-36f185322ea4"/>
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/7dd010c0-b7bf-46ef-93e0-310e4e4cc1c0"/>
+**병원 리스트**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/5d89f110-62c7-455e-b9cb-babb27c2a7f8"/>
+**1. 접수가 들어왔을 때(병원)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/46638280-2c77-4be7-8ee4-5805973f0854"/>
+**1. 접수를 했을 때(유저)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/e6c0b3b2-7f2f-4a31-af1f-82c262cc6cd2"/>
+**2. 접수 버튼을 눌렀을 때(병원)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/ec8dfcf0-4194-4027-b291-b08f1c7ab004"/>
+**2. 병원에서 접수 버튼을 눌렀을 때(유저)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/36bd7751-fef5-4769-807c-cb1ddc905422"/>
+**3. 진료 버튼을 눌렀을 때(병원)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/dee44d5d-0541-40bf-896f-b7e52d12fc7e"/>
+**2. 진료 완료가 되었을 때(유저)**
+<img width="100%" src="https://github.com/dobinpark/iHealMe/assets/53501690/ded92844-0aa9-4ffd-87d2-bcaf7f89f36a"/>
