@@ -39,9 +39,6 @@
 # 🛠 Tech Stack
 ![아이힐미 사용기술](https://github.com/dobinpark/iHealMe/assets/53501690/e7d2a530-5b55-49bf-baab-1db3410be1e9)
 
-# ⚙️ Architecture
-MVC
-
 # 🧑🏻‍💻 Team
 Back-End 개발자 6명<br>
 조장 : 방기웅<br>
